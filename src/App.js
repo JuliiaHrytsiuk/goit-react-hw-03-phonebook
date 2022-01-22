@@ -4,11 +4,11 @@ import Form from "./Form";
 import Filter from "./Filter";
 import ContactList from "./ContactList";
 import { nanoid } from "nanoid";
-// import initialContacts from "./contacts.json";
+import initialContacts from "./contacts.json";
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: initialContacts,
     filter: "",
   };
 
@@ -20,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     const contacts = JSON.parse(localStorage.getItem("contacts"));
-    this.setState({ contacts });
+    contacts && this.setState({ contacts });
   }
 
   formSubmitHandler = ({ name, number }) => {
